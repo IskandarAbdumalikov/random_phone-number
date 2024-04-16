@@ -1,4 +1,4 @@
-const TEL_NUMBERS =  [
+const TEL_NUMBERS = JSON.parse(localStorage.getItem("numbers")) || [
   "+998 93 929 5727",
   "+998 99 614 3347",
   "+998 93 574 7600",
@@ -52,7 +52,7 @@ createItem(TEL_NUMBERS);
 form.addEventListener("submit", (e) => {
   const inputValue = telNumber.value;
   TEL_NUMBERS.push(`+${inputValue.slice(0, 3)} ${inputValue.slice(3, 5)} ${inputValue.slice(5,8)} ${inputValue.slice(8, 12)}`);
-
+  localStorage.setItem("numbers", JSON.stringify(TEL_NUMBERS));
   e.preventDefault();
   createItem(TEL_NUMBERS);
   telNumber.value = "";
